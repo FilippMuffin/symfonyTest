@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product
 {
@@ -130,6 +130,13 @@ class Product
     public function getCategories(): Collection
     {
         return $this->categories;
+    }
+
+    public function setCategories($categories= []): self
+    {
+        $this->categories = new ArrayCollection($categories);
+
+        return $this;
     }
 
     public function addCategory(Category $category): self
